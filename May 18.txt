@@ -1,0 +1,40 @@
+[delete bill meter]
+
+Delete BILLING_READING_MAP Where Bill_Id like '201801011000070%';
+Delete BILL_METERED Where Bill_Id like '201801011000070%';             
+Delete DTL_MARGIN_GOVT Where Bill_Id like '201801011000070%';
+Delete DTL_MARGIN_PB Where Bill_Id like '201801011000070%';
+Delete SUMMARY_MARGIN_GOVT Where Bill_Id like '201801011000070%';
+Delete SUMMARY_MARGIN_PB Where Bill_Id like '201801011000070%';
+Delete SALES_REPORT Where Bill_Id like '201801011000070%';
+
+[ delete bill non meter ]
+
+delete from BILL_NON_METERED where bill_id='201802020106194'
+delete from BILL_NM_DTL where bill_id='201802020106194'
+delete from SALES_REPORT where bill_id in ='201802020106194'
+
+[ total consumption 2016,2017]
+
+SELECT sum(BILLED_CONSUMPTION)
+  FROM bill_metered
+ WHERE     BILL_YEAR BETWEEN 2016 AND 2017
+      and  SUBSTR (customer_id, 1, 4) in ('0303','0310')
+	  
+[ bill id using concat]
+
+(SELECT 201804||customer_id bill_id
+   FROM bill_non_metered
+  WHERE BILL_ID LIKE '20180424%'
+ UNION ALL
+ SELECT 201804||customer_id bill_id
+   FROM bill_metered
+  WHERE BILL_ID LIKE '20180424%')
+MINUS
+(SELECT 201804||customer_id bill_id
+   FROM bill_non_metered
+  WHERE BILL_ID LIKE '20171224%'
+ UNION ALL
+ SELECT 201804||customer_id bill_id
+   FROM bill_metered
+  WHERE BILL_ID LIKE '20171224%')
