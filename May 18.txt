@@ -10,9 +10,9 @@ Delete SALES_REPORT Where Bill_Id like '201801011000070%';
 
 [ delete bill non meter ]
 
-delete from BILL_NON_METERED where bill_id='201802020106194'
-delete from BILL_NM_DTL where bill_id='201802020106194'
-delete from SALES_REPORT where bill_id ='201802020106194'
+delete from BILL_NON_METERED where bill_id like '2018050401%';
+delete from BILL_NM_DTL where bill_id like '2018050401%';
+delete from SALES_REPORT where bill_id like '2018050401%';
 
 [ total consumption 2016,2017]
 

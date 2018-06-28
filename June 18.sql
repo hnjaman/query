@@ -1,3 +1,9 @@
+[ duplicate meter delete]
+
+delete from customer_meter where (customer_id, meter_id) in(
+select customer_id, min(meter_id)  from customer_meter  where customer_id like '0410%'
+group by customer_id having count(*)>1)
+
 [ duplicate data show]
 
 SELECT *
