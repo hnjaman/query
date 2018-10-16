@@ -1,2 +1,4 @@
 git rm --cached .idea/workspace.xml
 git checkout hashcode filename
+
+..

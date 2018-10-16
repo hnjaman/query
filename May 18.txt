@@ -1,5 +1,11 @@
-[delete bill meter]
+[i idea activation key]
+slashed
+BT20030411bt
 
+[delete bill meter]
+1213559022
+643501
+10030773
 Delete BILLING_READING_MAP Where Bill_Id like '201801011000070%';
 Delete BILL_METERED Where Bill_Id like '201801011000070%';             
 Delete DTL_MARGIN_GOVT Where Bill_Id like '201801011000070%';
@@ -10,9 +16,9 @@ Delete SALES_REPORT Where Bill_Id like '201801011000070%';
 
 [ delete bill non meter ]
 
-delete from BILL_NON_METERED where bill_id like '2018050401%';
-delete from BILL_NM_DTL where bill_id like '2018050401%';
-delete from SALES_REPORT where bill_id like '2018050401%';
+delete from BILL_NON_METERED where bill_id like '201808110105305%';
+delete from BILL_NM_DTL where bill_id like '201805040102655%';
+delete from SALES_REPORT where bill_id like '201805040102655%';
 
 [ total consumption 2016,2017]
 
