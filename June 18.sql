@@ -1,3 +1,53 @@
+http://103.94.135.151:8080/JGTDSL_WEB/getiPgDetailInfo.action?customerId=020110002
+
+[pubali bank]
+update bank_account_ledger set branch_id ='10211431', account_no='10211431' where trans_id in (
+select trans_id from bank_account_ledger where --BRANCH_ID = '10211431' -- 10211412
+ TRANS_DATE between TO_DATE('08/2018', 'MM/YYYY') and TO_DATE('08/31/2018', 'MM/DD/YYYY')
+and INSERTED_BY='Assistant Manager Shayestagonj'
+and customer_id like '13%'
+and bank_id ='102114'
+)
+
+
+[ merge from diff table]
+
+MERGE INTO bill_non_metered bnm
+     USING (SELECT *
+              FROM bill_coll_advanced
+             WHERE BILL_ID LIKE '2018100101%') bca
+        ON (bnm.bill_id = bca.bill_id)
+WHEN MATCHED
+THEN
+   UPDATE SET bnm.COLLECTION_DATE = bca.TRANS_DATE,
+              bnm.BRANCH_ID = bca.BRANCH_ID,
+              bnm.COLLECTED_BILLED_AMOUNT = bnm.BILLED_AMOUNT,
+              COLLECTED_PAYABLE_AMOUNT = ACTUAL_PAYABLE_AMOUNT,
+              status = 2,
+              BILL_TYPE = 3
+           WHERE bnm.status = 1
+
+[update from deferent table]
+
+UPDATE bill_non_metered bnm
+   SET (COLLECTION_DATE) = (SELECT BCA.TRANS_DATE
+                         FROM bill_coll_advanced bca
+                        WHERE bnm.bill_id = BCA.BILL_ID
+                        AND BCA.BILL_ID = '201810010119907'),
+       COLLECTED_BILLED_AMOUNT = BILLED_AMOUNT,
+       COLLECTED_PAYABLE_AMOUNT = ACTUAL_PAYABLE_AMOUNT,
+       status = 2,
+       BILL_TYPE = 3,
+       BRANCH_ID = (SELECT BCA.BRANCH_ID
+                         FROM bill_coll_advanced bca
+                        WHERE bnm.bill_id = BCA.BILL_ID
+                        AND BCA.BILL_ID = '201810010119907')
+ WHERE EXISTS (
+    SELECT 1
+      FROM bill_coll_advanced bca
+      WHERE bnm.bill_id = BCA.BILL_ID 
+      AND BCA.BILL_ID = '201810010119907')
+
 [ update from deferent table]
 
 MERGE INTO customer_personal_info cpi
