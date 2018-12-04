@@ -1,7 +1,4 @@
-git rm --cached .idea/workspace.xml
-git checkout hashcode filename
 
-..
 file:///in28Minutes/git/spring-micro-services/03.microservices/git-localconfig-repo
 file://E:/spring-microservices/03.microservices/git-localconfig-repo
 
