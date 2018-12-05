@@ -11,8 +11,8 @@ https://medium.com/extend/what-is-rest-a-simple-explanation-for-beginners-part-2
 
 ## DI 
 Constructor injection (the good) -> for mandatory feild
-Setter injection (the ugly) 		-> for optional feild
-Field injection (the bad)	-> head to use outside of spring container 
+Setter injection (the ugly) 		-> for optional feild, Setter Injection Make Testing Easy
+Field injection (the bad)	-> head to use outside of spring container, Field Injection, a Unit Test Dies
 
 @Configuration -> indicates that the class can be used by the Spring IoC container 
 				  as a source of bean definitions.
