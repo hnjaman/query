@@ -8,16 +8,22 @@ POST -> Not Idempotent, Otherwise all are Idempotent
 Both PUT and POST can be used for creating. 
 REST 6 constraints
 https://medium.com/extend/what-is-rest-a-simple-explanation-for-beginners-part-2-rest-constraints-129a4b69a582
+## IOC
+IOC and DI develop loosely coupled applications which can be easily tested.
+IOC- outsource of an object factory construction and management of objects.
+create and manage objects
+  
+
 
 ## DI 
 Constructor injection (the good) -> for mandatory feild
-Setter injection (the ugly) 		-> for optional feild, Setter Injection Make Testing Easy
-Field injection (the bad)	-> head to use outside of spring container, Field Injection, a Unit Test Dies
+Setter injection (the ugly) 	 -> for optional feild, Setter Injection Make Testing Easy
+Field injection (the bad)	 -> head to use outside of spring container, Field Injection, a Unit Test Dies
 
 @Configuration -> indicates that the class can be used by the Spring IoC container 
-				  as a source of bean definitions.
+		  as a source of bean definitions.
 @Bean -> annotation tells Spring that a method annotated with @Bean will return an object
-		that should be registered as a bean in the Spring application context
+	 that should be registered as a bean in the Spring application context
 
 ## GC
 
@@ -102,3 +108,52 @@ clone()
 wait()
 notify()
 notifyAll()
+
+Callable interface in concurrency package that is similar to Runnable interface but it can return any Object and able to throw Exception. 
+
+- this and super
+
+1. We can use super() as well this() only once inside constructor. If we use super() twice or this() twice or super() followed by this() or this() followed by super(), then immediately we get compile time error i.e, we can use either super() or this() as first statement inside constructor and not both.
+
+2. It is upto you that whether you use super() or this() or not because if we are not using this() or super() then by default compiler will put super() as first statement inside constructor. 
+
+### Interface and Abstract class
+Interface 
+1. support multiple inheritance
+2. set of common behaviors
+3. the class implements and agree with its behaviors
+4. add lot of flexibility in system
+*** what the object can do
+
+Abstract class
+1. can't create object, only extends
+2. type of templete for subclasses 
+3. no implimentation just declaration
+*** what the object is
+
+### Static class
+1. only nested class can be static
+2. nested static class dosen't need outer class reference
+3. static class can't access non static member of outer class
+
+### final vs const
+final - grab memory when to access > good
+const - grap memory when compile > less good
+
+instance variable can be final but not const
+
+### Dart
+1. All data types are object
+2. functions are also object
+3. Dynamic and staticly typed 
+4. optional parameter
+
+### Blockchain
+Distributed ledger technology
+1. transaction can't be changed of modify
+
+peer to peer monetary system
+no middle man needed
+imposible to hide anything
+
+
