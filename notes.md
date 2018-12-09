@@ -43,7 +43,7 @@ Although Garbage Collector is one of the module of JVM.
 
 ## Thread
 
--Daemon thread
+- Daemon thread
 
 Daemon thread is a low priority thread that runs in background 
 to perform tasks such as garbage collection.
@@ -80,3 +80,25 @@ yield() basically means that the thread is not doing anything particularly impor
 6. sleep() - This method causes the currently executing thread to sleep for the specified number of milliseconds, subject to the precision and accuracy of system timers and schedulers. The argument value for milliseconds can’t be negative, else it throws IllegalArgumentException.
 Thread.sleep() is used to pause the main thread execution for 2 seconds.
 Any other thread can interrupt the current thread in sleep, in that case InterruptedException is thrown.
+
+- hashcode and equals
+1. hashCode() : For every object, JVM generates a unique number which is hashcode. It returns distinct integers for distinct objects. A common misconception about this method is that hashCode() method returns the address of object, which is not correct. It convert the internal address of object to an integer by using an algorithm. The hashCode() method is native because in Java it is impossible to find address of an object, so it uses native languages like C/C++ to find address of the object.
+
+Use of hashCode() method : Returns a hash value that is used to search object in a collection. JVM(Java Virtual Machine) uses hashcode method while saving objects into hashing related data structures like HashSet, HashMap, Hashtable etc. The main advantage of saving objects based on hash code is that searching becomes easy.
+Note : Override of hashCode() method needs to be done such that for every object we generate a unique number. For example,for a Student class we can return roll no. of student from hashCode() method as it is unique.
+
+*** objects which are .equals() MUST have the same .hashCode().
+
+- Object class 
+Every class in Java is directly or indirectly derived from the Object class
+Hence Object class acts as a root of inheritance hierarchy in any Java Program.
+Methods 
+toString()
+hashcode()
+equals()
+getClass() 
+finalize()
+clone()
+wait()
+notify()
+notifyAll()
