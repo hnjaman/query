@@ -1,3 +1,38 @@
+--[ separate bank branch update ]
+
+-- # check bank branch 
+SELECT *
+  FROM mst_branch_info
+ WHERE bank_id IN
+          (SELECT BANK_ID
+             FROM mst_bank_info
+            WHERE     area_id IN (14, 15)
+                  AND STATUS = 1
+                  AND BANK_NAME NOT IN ('Grameenphone', 'ROBI'))
+                  and STATUS = 1
+-- # select 
+select * from bank_account_ledger
+where customer_id like '15%'
+and branch_id = '10201110'
+union 
+select * from bank_account_ledger
+where customer_id like '14%'
+and branch_id = '10201110'
+
+				  
+--# bank_account_ledger
+update bank_account_ledger set branch_id='10208715', ACCOUNT_NO='10208715'
+where TRANS_ID in(
+select TRANS_ID from bank_account_ledger
+where customer_id like '15%'
+and branch_id = '10208711'
+union 
+select TRANS_ID from bank_account_ledger
+where customer_id like '14%'
+and branch_id = '10201110'
+)
+
+
 --[ multiple like operation ]
 
 UPDATE customer_connection
