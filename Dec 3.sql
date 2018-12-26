@@ -1,3 +1,13 @@
+-- others appliance 
+select APPLIANCE_TYPE_CODE, count(*) from burner_qnt_change
+where APPLIANCE_TYPE_CODE not in(02,01)
+group by APPLIANCE_TYPE_CODE
+
+-- IPG 
+
+-- http://localhost:8080/JGTDSL_WEB/getCustomerBillInfo.action?customer_id=010100001
+
+
 --[ separate bank branch update ]
 
 -- # check bank branch 
